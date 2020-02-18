@@ -20,12 +20,12 @@ RUN \
 ENV OVFTOOL_VERSION 4.3.0-14746126
 
 # Install ovftool
-RUN OVFTOOL_INSTALLER=vmware-ovftool-4.3.0-14746126-lin.x86_64.bundle \
- && wget -q https://pksninja-bucket.s3.us-east-2.amazonaws.com/vmware-ovftool-4.3.0-14746126-lin.x86_64.bundle \
- && wget -q https://storage.googleapis.com/mortarchive/pub/ovftool/$vmware-ovftool-4.3.0-14746126-lin.x86_64.bundle.sha256 \
- && sha256sum -c vmware-ovftool-4.3.0-14746126-lin.x86_64.bundle.sha256 \
- && sh vmware-ovftool-4.3.0-14746126-lin.x86_64.bundle -p /usr/local --eulas-agreed --required \
- && rm -f vmware-ovftool-4.3.0-14746126-lin.x86_64.bundle*
+RUN OVFTOOL_INSTALLER=vmware-ovftool-4.3.0-14746126-lin.x86_64.bundle && \
+  wget -q https://pksninja-bucket.s3.us-east-2.amazonaws.com/vmware-ovftool-4.3.0-14746126-lin.x86_64.bundle && \
+  wget -q https://storage.googleapis.com/mortarchive/pub/ovftool/$vmware-ovftool-4.3.0-14746126-lin.x86_64.bundle.sha256 && \
+  sha256sum -c vmware-ovftool-4.3.0-14746126-lin.x86_64.bundle.sha256 && \
+  sh vmware-ovftool-4.3.0-14746126-lin.x86_64.bundle -p /usr/local --eulas-agreed --required && \
+  rm -f vmware-ovftool-4.3.0-14746126-lin.x86_64.bundle*
 
 # Add files.
 ADD root/.bashrc /root/.bashrc
