@@ -25,7 +25,7 @@ RUN OVFTOOL_INSTALLER=vmware-ovftool-4.3.0-14746126-lin.x86_64.bundle \
  && wget -q https://storage.googleapis.com/mortarchive/pub/ovftool/$vmware-ovftool-4.3.0-14746126-lin.x86_64.bundle.sha256 \
  && sha256sum -c vmware-ovftool-4.3.0-14746126-lin.x86_64.bundle.sha256 \
  && sh vmware-ovftool-4.3.0-14746126-lin.x86_64.bundle -p /usr/local --eulas-agreed --required \
- && rm -f ${OVFTOOL_INSTALLER}*
+ && rm -f vmware-ovftool-4.3.0-14746126-lin.x86_64.bundle*
 
 # Add files.
 ADD root/.bashrc /root/.bashrc
