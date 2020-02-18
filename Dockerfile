@@ -17,6 +17,18 @@ RUN \
   apt-get install -y byobu curl git htop man unzip vim wget && \
   apt-get install -y pandoc && \
   rm -rf /var/lib/apt/lists/*
+  
+# Set ENV for ovf Version
+ENV OVFTOOL_VERSION 4.3.0-14746126
+
+# Install ovftool
+RUN OVFTOOL_INSTALLER=vmware-ovftool-${OVFTOOL_VERSION}-lin.x86_64.bundle \
+ && wget -q https://pksninja-bucket.s3.us-east-2.amazonaws.com/${OVFTOOL_INSTALLER} \
+ && wget -q https://storage.googleapis.com/mortarchive/pub/ovftool/${OVFTOOL_INSTALLER}.sha256 \
+ && sha256sum -c ${OVFTOOL_INSTALLER}.sha256 \
+ && sh ${OVFTOOL_INSTALLER} -p /usr/local --eulas-agreed --required \
+ && rm -f ${OVFTOOL_INSTALLER}*
+
 
 # Add files.
 ADD root/.bashrc /root/.bashrc
