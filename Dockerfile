@@ -1,8 +1,7 @@
 #
-# Ubuntu Dockerfile
+# Kamper - Kubernetes App Mgmt Platform Engineering Runtime
 #
-# https://github.com/dockerfile/ubuntu
-#
+# #
 
 # Pull base image.
 FROM ubuntu:14.04
@@ -17,6 +16,16 @@ RUN \
   apt-get install -y byobu curl git htop man unzip vim wget && \
   apt-get install -y pandoc && \
   rm -rf /var/lib/apt/lists/*
+
+ENV OVFTOOL_VERSION 4.3.0-14746126
+
+# Install ovftool
+RUN OVFTOOL_INSTALLER=vmware-ovftool-4.3.0-14746126-lin.x86_64.bundle \
+ && wget -q https://pksninja-bucket.s3.us-east-2.amazonaws.com/vmware-ovftool-4.3.0-14746126-lin.x86_64.bundle \
+ && wget -q https://storage.googleapis.com/mortarchive/pub/ovftool/$vmware-ovftool-4.3.0-14746126-lin.x86_64.bundle.sha256 \
+ && sha256sum -c vmware-ovftool-4.3.0-14746126-lin.x86_64.bundle.sha256 \
+ && sh vmware-ovftool-4.3.0-14746126-lin.x86_64.bundle -p /usr/local --eulas-agreed --required \
+ && rm -f ${OVFTOOL_INSTALLER}*
 
 # Add files.
 ADD root/.bashrc /root/.bashrc
