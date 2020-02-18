@@ -23,7 +23,7 @@ ENV OVFTOOL_VERSION 4.3.0-14746126
 RUN \
   wget -q https://pksninja-bucket.s3.us-east-2.amazonaws.com/vmware-ovftool-4.3.0-14746126-lin.x86_64.bundle && \
   wget -q https://pksninja-bucket.s3.us-east-2.amazonaws.com/vmware-ovftool-4.3.0-14746126-lin.x86_64.bundle.sha256 && \
-  sh vmware-ovftool-4.3.0-14746126-lin.x86_64.bundle -p /usr/local --eulas-agreed --required && \
+  bash vmware-ovftool-4.3.0-14746126-lin.x86_64.bundle -p /usr/local --eulas-agreed --required && \
   rm -f vmware-ovftool-4.3.0-14746126-lin.x86_64.bundle*
 
 # Add files.
